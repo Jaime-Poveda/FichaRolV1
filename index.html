@@ -35,75 +35,7 @@
                         rows="3"></textarea>
                 </div>
             </div>
-
-            <div class="w-auto m-auto mb-2">
-                <h3>Raza</h3>
-                <div class="input-group h-100" style="width: 180px;">
-                    <span class="input-group-text" style="width: 60px;">Raza</span>
-                    <select id="razaSelect" class="form-select" aria-label="Raza" onchange="cambioRaza()">
-                        <option value=""></option>
-                        <option value="Humano">Humano</option>
-                        <option value="Elfo">Elfo</option>
-                        <option value="Enano">Enano</option>
-                        <option value="Mediano">Mediano</option>
-                        <option value="Goblin">Goblin</option>
-                        <option value="Orco">Orco</option>
-                        <option value="Reptiliano">Reptiliano</option>
-                        <option value="Otra">Otra</option>
-                    </select>
-                </div>
-            </div>
-            <div id="razaField" class=" row rounded-1 p-1 mb-3" style="max-width: 95%; background: #ececec;">
-                <div id="mejoraRazaDiv" class="">
-                    <div> <b>Mejora por Raza: </b> </div>
-                </div>
-            </div>
-
-            <div class="w-auto m-auto mb-2">
-                <h3>Clase</h3>
-                <div class="input-group h-100" style="width: 180px;">
-                    <span class="input-group-text" style="width: 60px;">Clase</span>
-                    <select id="claseSelect" class="form-select" aria-label="Clase" onchange="cambioClase()">
-                        <option value=""></option>
-                        <option value="Guerrero">Guerrero</option>
-                        <option value="Bárbaro">Bárbaro</option>
-                        <option value="Pícaro">Pícaro</option>
-                        <option value="Bardo">Bardo</option>
-                        <option value="Cazador">Cazador</option>
-                        <option value="Mago">Mago</option>
-                        <option value="Clérigo">Clérigo</option>
-                    </select>
-                </div>
-            </div>
-            <div id="claseField" class="row rounded-1 p-1 mb-3" style="max-width: 95%; background: #ececec;">
-                <div id="equipoClaseDiv" class=" ">
-                    <div> <b>Equipo de Clase: </b></div>
-                </div>
-            </div>
-
-            <div class="row mb-3 ">
-                <h3>Habilidades</h3>
-                <div id="habilidadesDiv" class="w-auto m-auto" style="max-width: 95%;">
-                    <div class="rounded-1 p-2" style="background: #ececec;">
-                        <div> <b>Pasiva de Clase: </b></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <h3>Nivel</h3>
-                <div class="w-auto m-auto">
-                    <div class="input-group h-100" style="width: 180px;">
-                        <span class="input-group-text" style="width: 60px;">Nivel</span>
-                        <select id="levelSelect" class="form-select" aria-label="Nivel" onchange="cambioNivel()">
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
+            
             <div class="row mb-3" style="width: 330px;">
                 <h3>Dado atributos</h3>
                 <div class="input-group w-auto">
@@ -191,10 +123,73 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="w-auto m-auto mb-2">
+                <h3>Raza</h3>
+                <div class="input-group h-100" style="width: 180px;">
+                    <span class="input-group-text" style="width: 60px;">Raza</span>
+                    <select id="razaSelect" class="form-select" aria-label="Raza" onchange="cambioRaza()">
+                        <option value=""></option>
+                        <option value="Humano">Humano</option>
+                        <option value="Elfo">Elfo</option>
+                        <option value="Enano">Enano</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Goblin">Goblin</option>
+                        <option value="Orco">Orco</option>
+                        <option value="Reptiliano">Reptiliano</option>
+                        <option value="Otra">Otra</option>
+                    </select>
+                </div>
+            </div>
+            <div id="razaField" class=" row rounded-1 p-1 mb-3" style="max-width: 95%; background: #ececec;">
+                <div id="mejoraRazaDiv" class="">
+                    <div> <b>Mejora por Raza: </b> </div>
+                </div>
+            </div>
 
-            <!-- <div class="row">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div> -->
+            <div class="w-auto m-auto mb-2">
+                <h3>Clase y nivel</h3>
+                <div class="row grid gap-2">
+                    <div class="input-group w-auto m-auto" style="width: 180px;">
+                        <span class="input-group-text" style="width: 60px;">Clase</span>
+                        <select id="claseSelect" class="form-select" style="width: 120px;"  aria-label="Clase" onchange="cambioClase()">
+                            <option value=""></option>
+                            <option value="Guerrero">Guerrero</option>
+                            <option value="Bárbaro">Bárbaro</option>
+                            <option value="Pícaro">Pícaro</option>
+                            <option value="Bardo">Bardo</option>
+                            <option value="Cazador">Cazador</option>
+                            <option value="Mago">Mago</option>
+                            <option value="Clérigo">Clérigo</option>
+                        </select>
+                    </div>
+                    <div class="w-auto m-auto">
+                        <div class="input-group h-100" style="width: 180px;">
+                            <span class="input-group-text" style="width: 60px;">Nivel</span>
+                            <select id="levelSelect" class="form-select" style="width: 120px;" aria-label="Nivel" onchange="cambioNivel()">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="claseField" class="row rounded-1 p-1 mb-3" style="max-width: 95%; background: #ececec;">
+                <div id="equipoClaseDiv" class=" ">
+                    <div> <b>Equipo de Clase: </b></div>
+                </div>
+            </div>
+
+            <div class="row mb-3 ">
+                <h3>Habilidades</h3>
+                <div id="habilidadesDiv" class="w-auto m-auto" style="max-width: 95%;">
+                    <div class="rounded-1 p-2" style="background: #ececec;">
+                        <div> <b>Pasiva de Clase: </b></div>
+                    </div>
+                </div>
+            </div>
+
         </form>
     </main>
 
