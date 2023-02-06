@@ -512,7 +512,7 @@ function dibujarHabilidades() {
             break;
         case "":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
+                '<div class="rounded-1 p-2" style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase: </b>' +
                 '</div>'
                 ;
