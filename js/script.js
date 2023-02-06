@@ -7,6 +7,15 @@ let nivel = levelSelect.value;
 let raza = razaSelect.value;
 let clase = claseSelect.value;
 
+let atributos = [
+    [0, 0],
+    [0, 0],
+    [0, 0],
+    [0, 0],
+    [0, 0],
+    [0, 0],
+]
+
 let dadoBoton = document.getElementById("dadoBoton");
 let valoresInput = document.getElementById("valoresInput");
 let sumaDiv = document.getElementById("sumaDiv");
@@ -14,8 +23,6 @@ let sumaDiv = document.getElementById("sumaDiv");
 let mejoraRazaDiv = document.getElementById("mejoraRazaDiv");
 let equipoClaseDiv = document.getElementById("equipoClaseDiv");
 let habilidadesDiv = document.getElementById("habilidadesDiv");
-
-let selectRaza;
 
 let valores = [];
 function dado() {
@@ -48,19 +55,27 @@ function generarSuma() {
     }
 }
 
+/* let valoresSeleccionados = [
+    [0, -1],
+    [0, -1],
+    [0, -1],
+    [0, -1],
+    [0, -1],
+    [0, -1],
+]; */
 let valoresSeleccionados = [
-    [0, -1],
-    [0, -1],
-    [0, -1],
-    [0, -1],
-    [0, -1],
-    [0, -1],
+    [-1, 0],
+    [-1, 0],
+    [-1, 0],
+    [-1, 0],
+    [-1, 0],
+    [-1, 0],
 ];
 
 function rellenarValoresSelec() {
     for (let i = 0; i < valoresSeleccionados.length; i++) {
-        valoresSeleccionados[i][0] = valores[i];
-        valoresSeleccionados[i][1] = -1;
+        valoresSeleccionados[i][1] = valores[i];
+        valoresSeleccionados[i][0] = -1;
     }
 }
 
@@ -77,16 +92,16 @@ function rellenarSelects() {
 
         for (let e = 0; e < valoresSeleccionados.length; e++) {
             let option = document.createElement("option");
-            option.value = valoresSeleccionados[e][0];
-            option.innerText = valoresSeleccionados[e][0];
+            option.value = valoresSeleccionados[e][1];
+            option.innerText = valoresSeleccionados[e][1];
 
-            if (valoresSeleccionados[e][1] != -1) {
+            if (valoresSeleccionados[e][0] != -1) {
                 //option.disabled = true;
                 option.className = "bg-danger text-white";
             } else {
                 option.className = "bg-success text-white";
             }
-            if (valoresSeleccionados[e][1] === i) {
+            if (valoresSeleccionados[e][0] === i) {
                 option.selected = true;
             }
 
@@ -109,58 +124,83 @@ function actualizarValoresSelec(opt) {
     for (let i = 0; i < selects.length; i++) {
         if (selects[i].selectedIndex > 0) {
             if (selects[i] === opt) {
-                valoresSeleccionados[selects[i].selectedIndex - 1][1] = i;
+                valoresSeleccionados[selects[i].selectedIndex - 1][0] = i;
             } else if (selects[i] !== opt && selects[i].selectedIndex === opt.selectedIndex) {
                 //valoresSeleccionados[selects[i].selectedIndex - 1][1] = -1;
             } else {
-                valoresSeleccionados[selects[i].selectedIndex - 1][1] = i;
+                valoresSeleccionados[selects[i].selectedIndex - 1][0] = i;
             }
         }
     }
+
+    actualizarAtributos();
 }
 
-function actualizarSuma(){
-    let sumaSpan = document.getElementsByClassName("attrAddSpan");
-    
+function actualizarAtributos() {
+    let selects = document.getElementsByClassName("attrSelect");
+    selects = [...selects];
 
+    for (let i = 0; i < selects.length; i++) {
+        if (selects[i].selectedIndex != 0) {
+            atributos[i][0] = valoresSeleccionados[selects[i].selectedIndex - 1][1];
+        }
+    }
+
+}
+
+function ActualizarModificador(){
+    let addSpans = document.getElementsByClassName("attrAddSpan");
+    addSpans = [...addSpans];
+
+    for (let i = 0; i < addSpans.length; i++) {
+        atributos[i][1] = addSpans[i];
+    }
+
+    console.log(atributos);
 }
 
 function actualizarModificador() {
-    let selects = document.getElementsByClassName("attrSelect");
     let spans = document.getElementsByClassName("modifierSpan");
     raza = razaSelect.value;
-    selects = [...selects];
     spans = [...spans];
+
     let values = [];
     let modifier = [];
+    let adds = [0, 0, 0, 0, 0, 0];
 
-    for (let i = 0; i < selects.length; i++) {
-        modifier.push(selects[i].value);
+    for (let i = 0; i < valoresSeleccionados.length; i++) {
+        modifier.push(valoresSeleccionados[i][1]);
     }
 
     switch (raza) {
         case "Humano":
-            selectRaza = document.getElementsByClassName("raceUpgrade");
+            let selectRaza = document.getElementsByClassName("raceUpgrade");
             selectRaza = [...selectRaza];
             for (let i = 0; i < selectRaza.length; i++) {
                 switch (selectRaza[i].value) {
                     case "FUE":
                         modifier[0]++;
+                        adds[0]++;
                         break;
                     case "DES":
                         modifier[1]++;
+                        adds[1]++;
                         break;
                     case "CON":
                         modifier[2]++;
+                        adds[2]++;
                         break;
                     case "CAR":
                         modifier[3]++;
+                        adds[3]++;
                         break;
                     case "INT":
                         modifier[4]++;
+                        adds[4]++;
                         break;
                     case "SAB":
                         modifier[5]++;
+                        adds[5]++;
                         break;
 
                     default:
@@ -170,30 +210,39 @@ function actualizarModificador() {
             break;
         case "Elfo":
             modifier[1]++;
+            adds[1]++;
             modifier[4]++;
+            adds[4]++;
             break;
         case "Enano":
             modifier[0]++;
+            adds[0]++;
             modifier[2]++;
+            adds[2]++;
             break;
         case "Mediano":
             modifier[1]++;
+            adds[1]++;
             modifier[3]++;
+            adds[3]++;
             break;
         case "Goblin":
-
             modifier[1]++;
+            adds[1]++;
             modifier[5]++;
+            adds[5]++;
             break;
         case "Orco":
-
             modifier[0]++;
+            adds[0]++;
             modifier[2]++;
+            adds[2]++;
             break;
         case "Reptiliano":
-
             modifier[0]++;
+            adds[0]++;
             modifier[3]++;
+            adds[3]++;
             break;
         case "Otra":
             selectRaza = document.getElementsByClassName("raceUpgrade");
@@ -202,21 +251,27 @@ function actualizarModificador() {
                 switch (selectRaza[i].value) {
                     case "FUE":
                         modifier[0]++;
+                        adds[0]++;
                         break;
                     case "DES":
                         modifier[1]++;
+                        adds[1]++;
                         break;
                     case "CON":
                         modifier[2]++;
+                        adds[2]++;
                         break;
                     case "CAR":
                         modifier[3]++;
+                        adds[3]++;
                         break;
                     case "INT":
                         modifier[4]++;
+                        adds[4]++;
                         break;
                     case "SAB":
                         modifier[5]++;
+                        adds[5]++;
                         break;
 
                     default:
@@ -229,22 +284,38 @@ function actualizarModificador() {
             break;
     }
 
+    let sumaSpans = document.getElementsByClassName("attrAddSpan");
+    for (let i = 0; i < adds.length; i++) {
+        if (adds[i] !== 0) {
+            sumaSpans[i].innerText = "+" + adds[i];
+        } else {
+            sumaSpans[i].innerText = adds[i];
+        }
+    }
+
+    let totalSpans = document.getElementsByClassName("totalSpan");
+    for (let i = 0; i < valoresSeleccionados.length; i++) {
+        if (valoresSeleccionados[i][0] !== -1) {
+            totalSpans[valoresSeleccionados[i][0]].innerText = "Total: " + (valoresSeleccionados[i][1] + adds[i]);
+        }
+    }
 
     for (let i = 0; i < modifier.length; i++) {
         if (modifier[i] <= 6) {
-            if(modifier[i]<4){
-                values.push("MOD: " + (-3 + (modifier[i] - 1)));
-            }else{
-                values.push("MOD: +" + (-3 + (modifier[i] - 1)));
+            if (modifier[i] <= 4) {
+                //spans[i].innerText = modifier[i];
+                //values.push("MOD: " + (-3 + (modifier[i] - 1)));
+            } else {
+                //values.push("MOD: +" + (-3 + (modifier[i] - 1)));
             }
         } else {
-            values.push("MOD: +" + (Math.ceil(modifier[i] / 2) - 1));
+            //values.push("MOD: +" + (Math.ceil(modifier[i] / 2) - 1));
         }
 
     }
 
     for (let i = 0; i < spans.length; i++) {
-        spans[i].innerText = values[i];
+        //spans[i].innerText = total[i];
     }
 
 }
