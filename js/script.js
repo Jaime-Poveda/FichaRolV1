@@ -1,6 +1,6 @@
 "use strict";
 
-let nivel = 1;
+let nivel = "1";
 let raza = "";
 let clase = "";
 
@@ -161,7 +161,7 @@ function actualizarAtributos() {
 
 }
 
-function dibujarMejoraRaza(){
+function dibujarMejoraRaza() {
     let mejoraRazaDiv = document.getElementById("mejoraRazaDiv");
     mejoraRazaDiv.innerHTML = "";
 
@@ -185,6 +185,7 @@ function dibujarMejoraRaza(){
     switch (raza) {
         case "Humano":
         case "Otra":
+            mejoraRazaDiv.className="mb-2"
             newDiv.innerHTML = '<b>Mejora de Raza: </b>' + mejoraRaza.innerHTML + mejoraRaza.innerHTML;
             break;
         case "Elfo":
@@ -390,71 +391,55 @@ function dibujarHabilidades() {
     switch (clase) {
         case "Guerrero":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase (Sediento): </b>Al eliminar a un objetivo, gana una acción adicional.' +
-                '   </div>' +
                 '</div>'
                 ;
             break;
         case "Bárbaro":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase (Ansia): </b>Cuando tiene un arma en cada mano, puede atacar con las dos armas a la vez en el mismo ataque. De esta forma, lanzaría 2d4+FUE.' +
-                '   </div>' +
                 '</div>'
                 ;
             break;
         case "Pícaro":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase (Sombra): </b>Puedes gastar una acción para entrar en sigilo. Al salir de sigilo, hace un ataque crítico.' +
-                '   </div>' +
                 '</div>'
                 ;
             break;
         case "Cazador":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase (Hábil tirador): </b>Si atacas sin haberte movido, ganas +1 al daño.' +
-                '   </div>' +
                 '</div>'
                 ;
             break;
         case "Bardo":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase (Canción Grupal): </b>Si realizas un hechizo sobre un aliado, puedes aplicar el mismo efecto a otro aliado que se encuentre adyacente al primero.' +
-                '   </div>' +
                 '</div>'
                 ;
             switch (nivel) {
                 case "3":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                         '       <b>Melodía debilitante: </b>1d4+CAR+Debilitado.' +
-                        '   </div>' +
                         '</div>'
                         ;
                 case "2":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                         '       <b>Canción motivadora: </b>El aliado tira con ventaja durante su turno.' +
-                        '   </div>' +
                         '</div>'
                         ;
                 case "1":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #ececec;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2" style="background: #ececec;" >' +
                         '       <b>Canción regenerante: </b>Curación de 1d4+CAR. (3 usos por combate)' +
-                        '   </div>' +
                         '</div>'
                         ;
                     break;
@@ -465,35 +450,27 @@ function dibujarHabilidades() {
             break;
         case "Mago":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #f8f8f8;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase (Maná): </b>Por cada hechizo lanzado, acumula un punto de maná. Los puntos de maná se pueden consumir para sumar +1 al daño de un ataque. Se pueden acumular un máximo de siete puntos de maná.' +
-                '   </div>' +
                 '</div>'
                 ;
             switch (nivel) {
                 case "3":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #f8f8f8;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                         '       <b>Juntar: </b>1d4+INT en área y junta a los enemigos.' +
-                        '   </div>' +
                         '</div>'
                         ;
                 case "2":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #f8f8f8;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                         '       <b>Aturdir: </b>1d4+INT + Aturdir.' +
-                        '   </div>' +
                         '</div>'
                         ;
                 case "1":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #f8f8f8;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2" style="background: #ececec;" >' +
                         '       <b>Explosión: </b>1d4+INT en área.' +
-                        '   </div>' +
                         '</div>'
                         ;
                     break;
@@ -504,35 +481,27 @@ function dibujarHabilidades() {
             break;
         case "Clérigo":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #f8f8f8;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase (Mi religión me lo permite): </b>Cuando lanza un hechizo, otorga +1 de daño a un aliado cercano.' +
-                '   </div>' +
                 '</div>'
                 ;
             switch (nivel) {
                 case "3":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #f8f8f8;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                         '       <b>Aturdir: </b>1d4+SAB + Aturdir.' +
-                        '   </div>' +
                         '</div>'
                         ;
                 case "2":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-1 " style="max-width: 95%; background: #f8f8f8;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                         '       <b>Marca divina: </b>1d4+SAB + Marcado.' +
-                        '   </div>' +
                         '</div>'
                         ;
                 case "1":
                     divHab.innerHTML +=
-                        '<div class="rounded-1 p-2 mb-1 " style="max-width: 95%; background: #f8f8f8;" >' +
-                        '   <div>' +
+                        '<div class="rounded-1 p-2 " style="background: #ececec;" >' +
                         '       <b>Curación: </b>Curación de 1d6+SAB. (3 usos por combate)' +
-                        '   </div>' +
                         '</div>'
                         ;
                     break;
@@ -543,10 +512,8 @@ function dibujarHabilidades() {
             break;
         case "":
             divPas.innerHTML =
-                '<div class="rounded-1 p-2 mb-2 " style="max-width: 95%; background: #f8f8f8;" >' +
-                '   <div>' +
+                '<div class="rounded-1 p-2 mb-2 " style="background: #ececec;" >' +
                 '       <b>Pasiva de Clase: </b>' +
-                '   </div>' +
                 '</div>'
                 ;
             break;
