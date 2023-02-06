@@ -15,6 +15,8 @@ let mejoraRazaDiv = document.getElementById("mejoraRazaDiv");
 let equipoClaseDiv = document.getElementById("equipoClaseDiv");
 let habilidadesDiv = document.getElementById("habilidadesDiv");
 
+let selectRaza;
+
 let valores = [];
 function dado() {
     generarValores();
@@ -97,6 +99,7 @@ function cambiarSelect(opt) {
     rellenarValoresSelec();
     actualizarValoresSelec(opt);
     rellenarSelects();
+    actualizarModificador();
 }
 
 function actualizarValoresSelec(opt) {
@@ -116,19 +119,149 @@ function actualizarValoresSelec(opt) {
     }
 }
 
+function actualizarSuma(){
+    let sumaSpan = document.getElementsByClassName("attrAddSpan");
+    
+
+}
+
+function actualizarModificador() {
+    let selects = document.getElementsByClassName("attrSelect");
+    let spans = document.getElementsByClassName("modifierSpan");
+    raza = razaSelect.value;
+    selects = [...selects];
+    spans = [...spans];
+    let values = [];
+    let modifier = [];
+
+    for (let i = 0; i < selects.length; i++) {
+        modifier.push(selects[i].value);
+    }
+
+    switch (raza) {
+        case "Humano":
+            selectRaza = document.getElementsByClassName("raceUpgrade");
+            selectRaza = [...selectRaza];
+            for (let i = 0; i < selectRaza.length; i++) {
+                switch (selectRaza[i].value) {
+                    case "FUE":
+                        modifier[0]++;
+                        break;
+                    case "DES":
+                        modifier[1]++;
+                        break;
+                    case "CON":
+                        modifier[2]++;
+                        break;
+                    case "CAR":
+                        modifier[3]++;
+                        break;
+                    case "INT":
+                        modifier[4]++;
+                        break;
+                    case "SAB":
+                        modifier[5]++;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            break;
+        case "Elfo":
+            modifier[1]++;
+            modifier[4]++;
+            break;
+        case "Enano":
+            modifier[0]++;
+            modifier[2]++;
+            break;
+        case "Mediano":
+            modifier[1]++;
+            modifier[3]++;
+            break;
+        case "Goblin":
+
+            modifier[1]++;
+            modifier[5]++;
+            break;
+        case "Orco":
+
+            modifier[0]++;
+            modifier[2]++;
+            break;
+        case "Reptiliano":
+
+            modifier[0]++;
+            modifier[3]++;
+            break;
+        case "Otra":
+            selectRaza = document.getElementsByClassName("raceUpgrade");
+            selectRaza = [...selectRaza];
+            for (let i = 0; i < selectRaza.length; i++) {
+                switch (selectRaza[i].value) {
+                    case "FUE":
+                        modifier[0]++;
+                        break;
+                    case "DES":
+                        modifier[1]++;
+                        break;
+                    case "CON":
+                        modifier[2]++;
+                        break;
+                    case "CAR":
+                        modifier[3]++;
+                        break;
+                    case "INT":
+                        modifier[4]++;
+                        break;
+                    case "SAB":
+                        modifier[5]++;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            break;
+
+        default:
+            break;
+    }
+
+
+    for (let i = 0; i < modifier.length; i++) {
+        if (modifier[i] <= 6) {
+            if(modifier[i]<4){
+                values.push("MOD: " + (-3 + (modifier[i] - 1)));
+            }else{
+                values.push("MOD: +" + (-3 + (modifier[i] - 1)));
+            }
+        } else {
+            values.push("MOD: +" + (Math.ceil(modifier[i] / 2) - 1));
+        }
+
+    }
+
+    for (let i = 0; i < spans.length; i++) {
+        spans[i].innerText = values[i];
+    }
+
+}
+
 function cambioRaza() {
     raza = razaSelect.value;
 
     let div = document.createElement("div");
     mejoraRazaDiv.innerHTML = "";
 
-    let mejoraRaza1 = document.createElement("div");
+    let mejoraRaza = document.createElement("div");
     let mejoraRaza2 = document.createElement("div");
 
-    mejoraRaza1.innerHTML =
+    mejoraRaza.innerHTML =
         '<div class="input-group" style="width: 140px;">' +
         '   <span class="input-group-text" style="width:50px;">+1</span>' +
-        '       <select class="form-select" aria-label="mejoraRaza1">' +
+        '       <select class="form-select raceUpgrade" aria-label="mejoraRaza" onchange="actualizarModificador()">' +
         '           <option value=""></option>' +
         '           <option value="FUE">FUE</option>' +
         '           <option value="DES">DES</option>' +
@@ -143,7 +276,7 @@ function cambioRaza() {
     mejoraRaza2.innerHTML =
         '<div class="input-group" style="width: 140px;">' +
         '   <span class="input-group-text" style="width:50px;">+1</span>' +
-        '   <select class="form-select" aria-label="mejoraRaza2">' +
+        '   <select class="form-select raceUpgrade" aria-label="mejoraRaza2" onchange="actualizarModificador()">' +
         '       <option value=""></option>' +
         '       <option value="FUE">FUE</option>' +
         '       <option value="DES">DES</option>' +
@@ -157,7 +290,7 @@ function cambioRaza() {
 
     switch (raza) {
         case "Humano":
-            div.innerHTML = '<b>Mejora de Raza: </b>' + mejoraRaza1.innerHTML + mejoraRaza2.innerHTML;
+            div.innerHTML = '<b>Mejora de Raza: </b>' + mejoraRaza.innerHTML + mejoraRaza.innerHTML;
             break;
         case "Elfo":
             div.innerHTML = "<b>Mejora de Raza: </b> +1 Des, +1 Int";
@@ -178,7 +311,7 @@ function cambioRaza() {
             div.innerHTML = "<b>Mejora de Raza: </b> +1 Fue, +1 Car";
             break;
         case "Otra":
-            div.innerHTML = '<b>Mejora de Raza: </b>' + mejoraRaza1.innerHTML + mejoraRaza2.innerHTML;
+            div.innerHTML = '<b>Mejora de Raza: </b>' + mejoraRaza.innerHTML + mejoraRaza.innerHTML;
             break;
 
         default:
@@ -187,6 +320,7 @@ function cambioRaza() {
     }
 
     mejoraRazaDiv.appendChild(div);
+    actualizarModificador();
 }
 
 function cambioClase() {
