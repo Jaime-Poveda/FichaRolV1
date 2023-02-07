@@ -298,11 +298,12 @@ function actualizarSumaAttr() {
         } else {
             sumaSpans[i].innerText = adds[i];
         }
+        atributos[i][1] = adds[i];
     }
 
-    for (let i = 0; i < sumaSpans.length; i++) {
+    /* for (let i = 0; i < sumaSpans.length; i++) {
         atributos[i][1] = parseInt(sumaSpans[i].innerText);
-    }
+    } */
 }
 
 function actualizarTotMod() {
@@ -582,16 +583,16 @@ function actualizarPV(opt) {
 
     if (pvMax !== "") {
         if (opt === "-") {
-            if (pv - inputPV.value < 0) {
+            if (pv - parseInt(inputPV.value) < 0) {
                 pv = 0;
             } else {
-                pv -= inputPV.value;
+                pv -= parseInt(inputPV.value);
             }
         } else if (opt === "+") {
-            if (pv + inputPV.value > pvMax) {
+            if (pv + parseInt(inputPV.value) > pvMax) {
                 pv = pvMax;
             } else {
-                pv += inputPV.value;
+                pv += parseInt(inputPV.value);
             }
         }
         pvActuales.innerText = pv;
