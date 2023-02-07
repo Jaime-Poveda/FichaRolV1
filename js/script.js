@@ -599,3 +599,29 @@ function actualizarPV(opt) {
         inputPV.value = "";
     }
 }
+
+function insertarEquipo(boton) {
+    let equipoDiv = document.getElementById("equipoDiv");
+    let nuevoEquipo = boton.parentNode.parentNode.cloneNode(true);
+
+    boton.parentNode.parentNode.children[0].value = "";
+
+    nuevoEquipo.children[1].children[0].innerText = "-";
+    nuevoEquipo.children[1].children[0].onclick = function () {
+        eliminarEquipo(this);
+    };
+
+    if (nuevoEquipo.children[0].value !== "") {
+        equipoDiv.append(nuevoEquipo);
+    }
+}
+
+function eliminarEquipo(boton) {
+    let equipoDiv = document.getElementById("equipoDiv");
+
+    for (let i = 0; i < equipoDiv.children.length; i++) {
+        if (equipoDiv.children[i].children[1].children[0] === boton) {
+            boton.parentNode.parentNode.remove();
+        }
+    }
+}

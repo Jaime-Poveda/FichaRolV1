@@ -58,7 +58,8 @@
                 <div class="w-auto">
                     <div class="input-group" style="width: 330px;">
                         <span class="input-group-text" style="width: 60px;">FUE</span>
-                        <select class="form-select text-center attrSelect" aria-label="FUE" onchange="cambiarSelect(this)">
+                        <select class="form-select text-center attrSelect" aria-label="FUE"
+                            onchange="cambiarSelect(this)">
                             <option value="">0</option>
                         </select>
                         <span class="input-group-text bg-white text-center attrAddSpan" style="width: 40px;">0</span>
@@ -70,7 +71,8 @@
                 <div class="w-auto">
                     <div class="input-group" style="width: 330px;">
                         <span class="input-group-text" style="width: 60px;">DES</span>
-                        <select class="form-select text-center attrSelect" aria-label="DES" onchange="cambiarSelect(this)">
+                        <select class="form-select text-center attrSelect" aria-label="DES"
+                            onchange="cambiarSelect(this)">
                             <option value="">0</option>
                         </select>
                         <span class="input-group-text bg-white attrAddSpan" style="width: 40px;">0</span>
@@ -81,7 +83,8 @@
                 <div class="w-auto">
                     <div class="input-group" style="width: 330px;">
                         <span class="input-group-text" style="width: 60px;">CON</span>
-                        <select class="form-select text-center attrSelect" aria-label="CON" onchange="cambiarSelect(this)">
+                        <select class="form-select text-center attrSelect" aria-label="CON"
+                            onchange="cambiarSelect(this)">
                             <option value="">0</option>
                         </select>
                         <span class="input-group-text bg-white attrAddSpan" style="width: 40px;">0</span>
@@ -92,7 +95,8 @@
                 <div class="w-auto">
                     <div class="input-group" style="width: 330px;">
                         <span class="input-group-text" style="width: 60px;">CAR</span>
-                        <select class="form-select text-center attrSelect" aria-label="CAR" onchange="cambiarSelect(this)">
+                        <select class="form-select text-center attrSelect" aria-label="CAR"
+                            onchange="cambiarSelect(this)">
                             <option value="">0</option>
                         </select>
                         <span class="input-group-text bg-white attrAddSpan" style="width: 40px;">0</span>
@@ -103,7 +107,8 @@
                 <div class="w-auto">
                     <div class="input-group" style="width: 330px;">
                         <span class="input-group-text" style="width: 60px;">INT</span>
-                        <select class="form-select text-center attrSelect" aria-label="INT" onchange="cambiarSelect(this)">
+                        <select class="form-select text-center attrSelect" aria-label="INT"
+                            onchange="cambiarSelect(this)">
                             <option value="">0</option>
                         </select>
                         <span class="input-group-text bg-white attrAddSpan" style="width: 40px;">0</span>
@@ -114,7 +119,8 @@
                 <div class="w-auto">
                     <div class="input-group" style="width: 330px;">
                         <span class="input-group-text" style="width: 60px;">SAB</span>
-                        <select class="form-select text-center attrSelect" aria-label="SAB" onchange="cambiarSelect(this)">
+                        <select class="form-select text-center attrSelect" aria-label="SAB"
+                            onchange="cambiarSelect(this)">
                             <option value="">0</option>
                         </select>
                         <span class="input-group-text bg-white attrAddSpan" style="width: 40px;">0</span>
@@ -167,8 +173,8 @@
                     <div class="w-auto m-auto">
                         <div class="input-group h-100">
                             <span class="input-group-text" style="width: 60px;">Nivel</span>
-                            <select id="levelSelect" class="form-select text-center" style="width: 70px;" aria-label="Nivel"
-                                onchange="cambioNivel()">
+                            <select id="levelSelect" class="form-select text-center" style="width: 70px;"
+                                aria-label="Nivel" onchange="cambioNivel()">
                                 <option value="1" selected>1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -191,13 +197,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="mb-3">
                 <h3>Puntos de Vida</h3>
                 <div class="input-group w-auto m-auto">
                     <span class="input-group-text text-center">PV</span>
                     <span id="pvActuales" class="input-group-text text-center" style="width: 55px;">0</span>
-                    <input id="inputPv" type="numer" class="form-control text-center" style="width: 55px;" placeholder="0" aria-label="PVMax">
+                    <input id="inputPv" type="numer" class="form-control text-center" style="width: 55px;"
+                        placeholder="0" aria-label="PVMax">
                     <span class="input-group-text text-center p-0">
                         <button type="button" class="btn btn-light" onclick="actualizarPV(this.innerText)">
                             -
@@ -212,6 +219,27 @@
                 <div class="row p-1 m-auto" style="width: 120px; ">
                     <div id="pvMaxField">
                         <div> <b>PVmax: </b> 0</div>
+                    </div>
+                </div>
+                <!-- <div> <b>Mov: </b> 3</div> -->
+            </div>
+
+            <div class="mb-3">
+                <h3>Equipo</h3>
+
+                <div class="m-auto rounded-1 p-1 grid gap-2" style="max-width: 95%; width: 330px; background: #ececec;">
+
+                    <div class="input-group">
+                        <textarea class="form-control text-center" placeholder="Añadir Equipo" rows="1"></textarea>
+                        <span class="input-group-text text-center p-0">
+                            <button type="button" class="btn btn-light " onclick="insertarEquipo(this)">
+                                +
+                            </button>
+                        </span>
+                    </div>
+
+                    <div id="equipoDiv" class="mt-3">
+
                     </div>
                 </div>
             </div>
