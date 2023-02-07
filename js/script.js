@@ -3,6 +3,8 @@
 let nivel = "1";
 let raza = "";
 let clase = "";
+let pvMax = "";
+let pv = "";
 
 let valores = [];
 
@@ -38,6 +40,10 @@ function cambioClase() {
 
     dibujarEquipo();
     dibujarHabilidades();
+
+    if (atributos[2][0] !== 0 && clase !== "") {
+        cambiarPVmax();
+    }
 }
 function cambioNivel() {
     nivel = document.getElementById("levelSelect").value;
@@ -159,6 +165,10 @@ function actualizarAtributos() {
         }
     }
 
+    if (atributos[2][0] !== 0 && clase !== "") {
+        cambiarPVmax();
+    }
+
 }
 
 function dibujarMejoraRaza() {
@@ -185,7 +195,7 @@ function dibujarMejoraRaza() {
     switch (raza) {
         case "Humano":
         case "Otra":
-            mejoraRazaDiv.className="mb-2"
+            mejoraRazaDiv.className = "mb-2"
             newDiv.innerHTML = '<b>Mejora de Raza: </b>' + mejoraRaza.innerHTML + mejoraRaza.innerHTML;
             break;
         case "Elfo":
@@ -524,4 +534,66 @@ function dibujarHabilidades() {
 
     habilidadesDiv.append(divPas);
     habilidadesDiv.append(divHab);
+}
+
+function cambiarPVmax() {
+    let pvMaxField = document.getElementById("pvMaxField");
+    let pvActuales = document.getElementById("pvActuales");
+
+    let total = atributos[2][0] + atributos[2][1];
+
+    switch (clase) {
+        case "Guerrero":
+            pvMax = 80 + (total * 5);
+            break;
+        case "Bárbaro":
+            pvMax = 65 + (total * 5);
+            break;
+        case "Pícaro":
+            pvMax = 54 + (total * 4);
+            break;
+        case "Bardo":
+            pvMax = 54 + (total * 4);
+            break;
+        case "Cazador":
+            pvMax = 52 + (total * 3);
+            break;
+        case "Mago":
+            pvMax = 52 + (total * 3);
+            break;
+        case "Clérigo":
+            pvMax = 43 + (total * 3);
+            break;
+
+        default:
+            break;
+    }
+
+
+    pvMaxField.innerHTML = "<b>PVmax: </b>" + pvMax;
+
+    pv = pvMax;
+    pvActuales.innerText = pv;
+}
+
+function actualizarPV(opt) {
+    let inputPV = parseInt(document.getElementById("inputPv").value);
+    let pvActuales = document.getElementById("pvActuales");
+
+    if (pvMax !== "") {
+        if (opt === "-") {
+            if (pv - inputPV < 0) {
+                pv = 0;
+            } else {
+                pv -= inputPV;
+            }
+        } else if (opt === "+") {
+            if (pv + inputPV > pvMax) {
+                pv = pvMax;
+            } else {
+                pv += inputPV;
+            }
+        }
+        pvActuales.innerText = pv;
+    }
 }
