@@ -49,6 +49,13 @@ function cambioNivel() {
     nivel = document.getElementById("levelSelect").value;
 
     dibujarHabilidades();
+
+    if (nivel > 1) {
+        mejoraNivel();
+    }
+
+    actualizarSumaAttr();
+    actualizarTotMod();
 }
 
 function lanzarDado8() {
@@ -291,6 +298,13 @@ function actualizarSumaAttr() {
             break;
     }
 
+    let mejorasNivel = document.getElementsByClassName("claseUpgrade");
+    for (let i = 0; i < mejorasNivel.length; i++) {
+        if(mejorasNivel[i].value!==""){
+            adds[mejorasNivel[i].value-1]++;
+        }
+    }
+
     let sumaSpans = document.getElementsByClassName("attrAddSpan");
     for (let i = 0; i < adds.length; i++) {
         if (adds[i] !== 0) {
@@ -300,10 +314,6 @@ function actualizarSumaAttr() {
         }
         atributos[i][1] = adds[i];
     }
-
-    /* for (let i = 0; i < sumaSpans.length; i++) {
-        atributos[i][1] = parseInt(sumaSpans[i].innerText);
-    } */
 }
 
 function actualizarTotMod() {
@@ -535,6 +545,33 @@ function dibujarHabilidades() {
 
     habilidadesDiv.append(divPas);
     habilidadesDiv.append(divHab);
+}
+
+function mejoraNivel() {
+    let mejoraClaseDiv = document.getElementById("mejoraClaseDiv");
+
+    mejoraClaseDiv.innerHTML = "";
+
+    let divInput = document.createElement("div");
+    //divInput.className = "input-group";
+    divInput.innerHTML =
+        '<div class="input-group">' +
+        '   <span class="input-group-text">+1</span>' +
+        '   <select class="form-select claseUpgrade"' +
+        '       onchange="actualizarSumaAttr(), actualizarTotMod()">' +
+        '       <option value=""></option>' +
+        '       <option value="1">FUE</option>' +
+        '       <option value="2">DES</option>' +
+        '       <option value="3">CON</option>' +
+        '       <option value="4">CAR</option>' +
+        '       <option value="5">INT</option>' +
+        '       <option value="6">SAB</option>' +
+        '   </select>'
+    '</div">';
+
+    for (let i = 1; i < nivel; i++) {
+        mejoraClaseDiv.innerHTML += divInput.innerHTML + divInput.innerHTML;
+    }
 }
 
 function cambiarPVmax() {

@@ -14,8 +14,7 @@
 
 
     <main class="m-4">
-        <form
-            class="bg-white text-dark text-center border border-2 rounded-2 p-2 d-flex flex-column justify-content-center align-items-center"
+        <div class="bg-white text-dark text-center border border-2 rounded-2 p-2 d-flex flex-column justify-content-center align-items-center"
             style="max-width: 600px;">
             <h1 class="mb-3">One Rol(l)</h1>
 
@@ -189,6 +188,33 @@
                 </div>
             </div>
 
+            <div class="row mb-3">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle text-dark border border-3 p-2"
+                        style="background: #ececec;" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                        <b>Mejora por nivel</b>
+                    </button>
+                    <div id="mejoraClaseDiv" class="dropdown-menu p-0" style="background: #ececec;">
+
+                        <!-- <div class="input-group">
+                            <span class="input-group-text">+1</span>
+                            <select class="form-select claseUpgrade"
+                                onchange="actualizarSumaAttr(), actualizarTotMod()">
+                                <option value=""></option>
+                                <option value="FUE">FUE</option>
+                                <option value="DES">DES</option>
+                                <option value="CON">CON</option>
+                                <option value="CAR">CAR</option>
+                                <option value="INT">INT</option>
+                                <option value="SAB">SAB</option>
+                            </select>
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+
+
             <div class="row mb-3 ">
                 <h3>Habilidades</h3>
                 <div id="habilidadesDiv" class="w-auto m-auto" style="max-width: 95%;">
@@ -231,6 +257,7 @@
 
                     <div class="input-group">
                         <textarea class="form-control text-center" placeholder="Añadir Equipo" rows="1"></textarea>
+                        <!-- <input type="text" class="form-control w-25" style="width: 10px;" placeholder="Cantidad"> -->
                         <span class="input-group-text text-center p-0">
                             <button type="button" class="btn btn-light " onclick="insertarEquipo(this)">
                                 +
@@ -244,7 +271,7 @@
                 </div>
             </div>
 
-        </form>
+        </div>
     </main>
 
     <script src="js/script.js"></script>
