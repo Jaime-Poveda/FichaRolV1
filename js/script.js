@@ -577,23 +577,24 @@ function cambiarPVmax() {
 }
 
 function actualizarPV(opt) {
-    let inputPV = parseInt(document.getElementById("inputPv").value);
+    let inputPV = document.getElementById("inputPv");
     let pvActuales = document.getElementById("pvActuales");
 
     if (pvMax !== "") {
         if (opt === "-") {
-            if (pv - inputPV < 0) {
+            if (pv - inputPV.value < 0) {
                 pv = 0;
             } else {
-                pv -= inputPV;
+                pv -= inputPV.value;
             }
         } else if (opt === "+") {
-            if (pv + inputPV > pvMax) {
+            if (pv + inputPV.value > pvMax) {
                 pv = pvMax;
             } else {
-                pv += inputPV;
+                pv += inputPV.value;
             }
         }
         pvActuales.innerText = pv;
+        inputPV.value = "";
     }
 }
