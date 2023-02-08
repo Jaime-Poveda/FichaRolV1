@@ -53,6 +53,7 @@ function cambioNivel() {
     if (nivel > 1) {
         mejoraNivel();
     }
+    mejoraNivel();
 
     actualizarSumaAttr();
     actualizarTotMod();
@@ -300,8 +301,8 @@ function actualizarSumaAttr() {
 
     let mejorasNivel = document.getElementsByClassName("claseUpgrade");
     for (let i = 0; i < mejorasNivel.length; i++) {
-        if(mejorasNivel[i].value!==""){
-            adds[mejorasNivel[i].value-1]++;
+        if (mejorasNivel[i].value !== "") {
+            adds[mejorasNivel[i].value - 1]++;
         }
     }
 
@@ -618,7 +619,7 @@ function actualizarPV(opt) {
     let inputPV = document.getElementById("inputPv");
     let pvActuales = document.getElementById("pvActuales");
 
-    if (pvMax !== "") {
+    if (pvMax !== "" && inputPV.value !== "") {
         if (opt === "-") {
             if (pv - parseInt(inputPV.value) < 0) {
                 pv = 0;
