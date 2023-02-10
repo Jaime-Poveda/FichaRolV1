@@ -34,6 +34,8 @@ function cambioRaza() {
     raza = document.getElementById("razaSelect").value;
 
     dibujarMejoraRaza();
+    
+    actualizarAtributos();
 }
 function cambioClase() {
     clase = document.getElementById("claseSelect").value;
@@ -50,13 +52,15 @@ function cambioNivel() {
 
     dibujarHabilidades();
 
-    if (nivel > 1) {
+    /* if (nivel > 1) {
         mejoraNivel();
-    }
+    } */
     mejoraNivel();
 
     actualizarSumaAttr();
     actualizarTotMod();
+    
+    actualizarAtributos();
 }
 
 function lanzarDado8() {
@@ -187,7 +191,7 @@ function dibujarMejoraRaza() {
     mejoraRaza.innerHTML =
         '<div class="input-group" style="width: 140px;">' +
         '   <span class="input-group-text" style="width:50px;">+1</span>' +
-        '       <select class="form-select raceUpgrade" aria-label="mejoraRaza" onchange="actualizarSumaAttr(), actualizarTotMod()">' +
+        '       <select class="form-select raceUpgrade" aria-label="mejoraRaza" onchange="actualizarSumaAttr(), actualizarTotMod(), actualizarAtributos();">' +
         '           <option value=""></option>' +
         '           <option value="FUE">FUE</option>' +
         '           <option value="DES">DES</option>' +
@@ -559,7 +563,7 @@ function mejoraNivel() {
         '<div class="input-group">' +
         '   <span class="input-group-text">+1</span>' +
         '   <select class="form-select claseUpgrade"' +
-        '       onchange="actualizarSumaAttr(), actualizarTotMod()">' +
+        '       onchange="actualizarSumaAttr(), actualizarTotMod(), actualizarAtributos();">' +
         '       <option value=""></option>' +
         '       <option value="1">FUE</option>' +
         '       <option value="2">DES</option>' +
@@ -573,6 +577,7 @@ function mejoraNivel() {
     for (let i = 1; i < nivel; i++) {
         mejoraClaseDiv.innerHTML += divInput.innerHTML + divInput.innerHTML;
     }
+    
 }
 
 function cambiarPVmax() {
